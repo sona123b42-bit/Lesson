@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="challenge.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="top">
+        <a class="button ghost" href="index.html">Back Home</a>
+        <h1 id="mission-title">Track Hub</h1>
+        <div class="score" id="score-box">Score: 0 | Streak: 0</div>
+      </header>
+
+      <section class="panel pop">
+        <h2>Progression</h2>
+        <p class="muted" id="unlock-note"></p>
+        <div class="score" id="reward-box">Reward Wallet: $0</div>
+        <div class="hero-strip" id="hero-strip">Preparing mission board...</div>
+        <div id="mission-list" class="mission-list"></div>
+      </section>
+
+      <section class="panel pop delay">
+        <h2>How It Works</h2>
+        <p class="muted">
+          Levels go from easy to hard. Only the next unfinished level is open.
+          Click any unlocked level to jump to its own mission page, solve the
+          quiz, solve the coding puzzle, and unlock the next step.
+        </p>
+      </section>
+
+      <section class="panel pop delay-2">
+        <h2>Reward Rules</h2>
+        <p class="muted">
+          Finish a full track to earn $50. Complete Python to unlock HTML,
+          complete HTML to unlock CSS, and complete CSS to unlock JavaScript.
+        </p>
+      </section>
+    </main>
+
+    <script src="game-data.js"></script>
+    <script src="challenge.js"></script>
+  </body>
+</html>

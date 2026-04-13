@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Confidence Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-shape shape-a"></div>
+    <div class="background-shape shape-b"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="tag">confidence booster</p>
+        <h1>Study Confidence Companion</h1>
+        <p>
+          Learn in a fun flow: Python first, then HTML, CSS, and JavaScript.
+          Track progress, practice missions, and keep confidence high.
+        </p>
+        <div class="motivation-strip" id="motivation-strip">
+          <span id="motivation-text">Loading study energy...</span>
+        </div>
+      </header>
+
+      <section class="panel">
+        <h2>Learning Path Missions</h2>
+        <p class="muted">
+          Click a mission to jump to a separate challenge page with question and
+          coding tasks.
+        </p>
+        <div class="wallet" id="reward-wallet">Reward Wallet: $0</div>
+        <div class="path-grid">
+          <a
+            class="button path-btn"
+            data-topic="python"
+            href="challenge.html?topic=python"
+            >Start Python Mission</a
+          >
+          <a
+            class="button path-btn"
+            data-topic="html"
+            href="challenge.html?topic=html"
+            >Start HTML Mission</a
+          >
+          <a
+            class="button path-btn"
+            data-topic="css"
+            href="challenge.html?topic=css"
+            >Start CSS Mission</a
+          >
+          <a
+            class="button path-btn"
+            data-topic="javascript"
+            href="challenge.html?topic=javascript"
+            >Start JavaScript Mission</a
+          >
+        </div>
+      </section>
+
+      <section class="grid two-col">
+        <article class="panel">
+          <h2>Progress Snapshot</h2>
+          <div class="stats" id="stats"></div>
+          <button id="build-update" class="button">
+            Build Progress Update
+          </button>
+          <textarea
+            id="update-output"
+            class="output"
+            rows="6"
+            placeholder="Generated summary appears here..."
+            readonly
+          ></textarea>
+        </article>
+
+        <article class="panel">
+          <h2>Quick Confidence Quiz</h2>
+          <label for="quiz-track">Track</label>
+          <select id="quiz-track"></select>
+          <button id="new-question" class="button">Ask a Basic Question</button>
+          <div class="question-box">
+            <p id="question-text">Pick a track and click the button.</p>
+            <details>
+              <summary>Show answer</summary>
+              <p id="answer-text"></p>
+            </details>
+          </div>
+          <div class="quiz-actions">
+            <button id="mark-correct" class="button ghost">
+              She got it right
+            </button>
+            <button id="mark-review" class="button ghost">Needs review</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Curriculum Tracker</h2>
+        <p class="muted">
+          A standard learning roadmap: Python, then HTML, CSS, and JavaScript.
+          Update lesson status and study minutes any time.
+        </p>
+        <div class="track-switch" id="track-switch"></div>
+        <div id="curriculum"></div>
+      </section>
+
+      <section class="grid two-col">
+        <article class="panel">
+          <h2>Manual Study Log</h2>
+          <form id="log-form" class="form-grid">
+            <label for="log-date">Date</label>
+            <input id="log-date" type="date" required />
+
+            <label for="log-track">Track</label>
+            <select id="log-track" required></select>
+
+            <label for="log-minutes">Minutes Studied</label>
+            <input id="log-minutes" type="number" min="5" step="5" required />
+
+            <label for="log-note">Note</label>
+            <input id="log-note" type="text" placeholder="ex: loops practice" />
+
+            <button class="button" type="submit">Add Session</button>
+          </form>
+        </article>
+
+        <article class="panel">
+          <h2>Recent Sessions</h2>
+          <ul id="session-list" class="session-list"></ul>
+        </article>
+      </section>
+
+      <section class="grid two-col">
+        <article class="panel">
+          <h2>What Did She Learn?</h2>
+          <form id="reflection-form" class="form-grid">
+            <label for="reflection-date">Date</label>
+            <input id="reflection-date" type="date" required />
+
+            <label for="reflection-track">Track</label>
+            <select id="reflection-track" required></select>
+
+            <label for="reflection-module">Module</label>
+            <select id="reflection-module" required></select>
+
+            <label for="reflection-confidence">Confidence (1-5)</label>
+            <input
+              id="reflection-confidence"
+              type="number"
+              min="1"
+              max="5"
+              step="1"
+              value="3"
+              required
+            />
+
+            <label for="reflection-learned">What did she learn?</label>
+            <textarea
+              id="reflection-learned"
+              class="output"
+              rows="3"
+              placeholder="Example: Learned loops and fixed a bug by using range()."
+              required
+            ></textarea>
+
+            <label for="reflection-next">Next focus</label>
+            <input
+              id="reflection-next"
+              type="text"
+              placeholder="Example: Practice dictionaries tomorrow"
+            />
+
+            <button class="button" type="submit">Save Reflection</button>
+          </form>
+        </article>
+
+        <article class="panel">
+          <h2>Recent Learning Notes</h2>
+          <ul id="reflection-list" class="reflection-list"></ul>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Share Progress Between Devices</h2>
+        <p class="muted">
+          Keep using local storage for now. Generate a snapshot, send it to the
+          other device, then import it there.
+        </p>
+        <div class="share-grid">
+          <div>
+            <div class="quiz-actions">
+              <button id="share-generate" class="button" type="button">
+                Generate Snapshot
+              </button>
+              <button id="share-copy" class="button ghost" type="button">
+                Copy Snapshot
+              </button>
+              <button id="share-download" class="button ghost" type="button">
+                Download JSON
+              </button>
+            </div>
+            <textarea
+              id="share-export-output"
+              class="output"
+              rows="8"
+              placeholder="Progress snapshot JSON appears here..."
+              readonly
+            ></textarea>
+          </div>
+          <div>
+            <label for="share-import-file">Import Snapshot File</label>
+            <input
+              id="share-import-file"
+              type="file"
+              accept="application/json"
+            />
+            <button id="share-import" class="button" type="button">
+              Import Snapshot
+            </button>
+            <p id="share-status" class="muted">
+              Import will replace current local progress on this device.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

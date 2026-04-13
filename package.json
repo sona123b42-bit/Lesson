@@ -1,0 +1,13 @@
+{
+  "name": "study-confidence-companion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static study companion app with lesson tests, mission pages, and local browser storage.",
+  "scripts": {
+    "deploy-note": "Deploy this folder directly to any static host such as Vercel, Netlify, or GitHub Pages",
+    "db:push": "node scripts/apply-supabase-schema.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}

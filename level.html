@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level Mission</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="level.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="top">
+        <a
+          class="button ghost"
+          id="back-link"
+          href="challenge.html?topic=python"
+          >Back to Track</a
+        >
+        <div>
+          <p class="tag" id="level-tag">mission</p>
+          <h1 id="level-title">Level</h1>
+        </div>
+        <div class="score" id="wallet-box">Wallet: $0</div>
+      </header>
+
+      <section class="panel progress-panel">
+        <div class="progress-meta">
+          <strong id="campaign-label">Track Progress</strong>
+          <span id="campaign-count">0 / 15</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="campaign-fill"></div>
+        </div>
+        <div class="step-row">
+          <div class="step-chip" id="step-quiz">1. Quiz</div>
+          <div class="step-chip" id="step-puzzle">2. Puzzle</div>
+          <div class="step-chip" id="step-clear">3. Clear</div>
+        </div>
+      </section>
+
+      <section class="panel ribbon-panel">
+        <div class="ribbon" id="level-ribbon">Loading level...</div>
+        <p class="muted" id="level-summary"></p>
+      </section>
+
+      <section class="grid one-col">
+        <article class="panel" id="quiz-panel">
+          <h2>Quiz Key</h2>
+          <p id="quiz-question">Loading question...</p>
+          <input id="quiz-answer" type="text" placeholder="Type the answer" />
+          <div class="actions">
+            <button id="check-quiz" class="button">Check Answer</button>
+            <button id="show-quiz-hint" class="button ghost" type="button">
+              Show Hint
+            </button>
+          </div>
+          <p id="quiz-feedback" class="feedback"></p>
+          <div class="hint-box" id="quiz-hint-box" hidden></div>
+        </article>
+
+        <article class="panel is-hidden" id="puzzle-panel">
+          <h2>Code Puzzle</h2>
+          <p id="mission-instruction">Loading mission...</p>
+          <textarea id="code-input" class="code-box" rows="10"></textarea>
+          <div class="actions">
+            <button id="run-code" class="button">Solve Puzzle</button>
+            <button id="show-code-hint" class="button ghost" type="button">
+              Show Hint
+            </button>
+          </div>
+          <p id="mission-feedback" class="feedback"></p>
+          <div class="hint-box" id="code-hint-box" hidden></div>
+        </article>
+      </section>
+
+      <section class="panel is-hidden" id="success-panel">
+        <h2>Level Complete</h2>
+        <p class="muted" id="success-message"></p>
+        <div class="actions">
+          <button id="next-link" class="button" type="button">
+            Next Level
+          </button>
+        </div>
+      </section>
+
+      <section class="panel is-hidden" id="preview-panel">
+        <h2>Live Preview</h2>
+        <iframe
+          id="preview-frame"
+          title="Level preview"
+          sandbox="allow-scripts"
+        ></iframe>
+      </section>
+    </main>
+
+    <script src="game-data.js"></script>
+    <script src="level.js"></script>
+  </body>
+</html>
