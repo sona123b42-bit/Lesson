@@ -501,6 +501,36 @@ function normalizeLessonText(value) {
     .trim();
 }
 
+function hashSeed(value) {
+  let hash = 0;
+  const text = String(value || "");
+  for (let i = 0; i < text.length; i += 1) {
+    hash = (hash * 31 + text.charCodeAt(i)) >>> 0;
+  }
+  return hash;
+}
+
+function buildLessonQuizSet(baseQuiz, fallbackQuiz, key, count) {
+  const pool = [...baseQuiz, ...fallbackQuiz].filter(
+    (item, index, list) =>
+      list.findIndex(
+        (q) => normalizeLessonText(q.q) === normalizeLessonText(item.q),
+      ) === index,
+  );
+
+  if (!pool.length) return [];
+
+  const pickCount = Math.max(1, Math.min(count, pool.length));
+  const start = hashSeed(key) % pool.length;
+  const picked = [];
+
+  for (let i = 0; i < pickCount; i += 1) {
+    picked.push(pool[(start + i) % pool.length]);
+  }
+
+  return picked;
+}
+
 function buildLessonAwareTest() {
   const fallback = TESTS[trackId] || TESTS.python;
   const profiles = LESSON_PROFILES[trackId] || [];
@@ -516,10 +546,18 @@ function buildLessonAwareTest() {
     return fallback;
   }
 
+  const quizCount = matched.test.quiz.length;
+  const lessonQuiz = buildLessonQuizSet(
+    matched.test.quiz,
+    fallback.quiz,
+    lessonKey,
+    quizCount,
+  );
+
   return {
     ...fallback,
     label: `${fallback.label} - ${lessonTitle}`,
-    quiz: matched.test.quiz,
+    quiz: lessonQuiz,
     code: matched.test.code,
   };
 }
